@@ -35,7 +35,7 @@ var urlRequestBuilder = function(title, year = null, type = null){
 
 var requestMovieComplete = function (){
   console.log(this.response);
-  if(this.response.Response == "False") {
+  if(!this.response) {
     statusIcon.className += " fa-exclamation-triangle red"; 
   }
   else{
@@ -47,8 +47,10 @@ var requestMovieComplete = function (){
 }
 
 var displayNoResult = function (){
-  document.getElementById('r-info').textContent = 'No result';
-  document.getElementById('r-poster').style.visibility = 'hidden';
+  if (!this.title) {
+    document.getElementById('r-info').innerText = 'Your search returned no results. Please try again.';
+    document.getElementById('r-poster').style.visibility = 'hidden';
+  }
 }
 
 var displayResult = function (response){
@@ -71,10 +73,10 @@ var toggleLoadingSpinner = function (btn, spnr){
   spinner.hidden = !spinner.hidden;
 }
 
-var app = function(){
-  var url = "http://hp-api.herokuapp.com/api/characters";
+// var app = function(){
+//   var url = "http://hp-api.herokuapp.com/api/characters";
   //makeRequest(url, requestComplete);  
-  populateYearDropdown();
-}
+//   populateYearDropdown();
+// }
 
-window.onload = app;
+// window.onload = app;
