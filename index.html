@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie Database</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src='index.js'></script>
+    <script type="text/javascript" src="index.js"></script>
+  </head>
+  <body>
+  <br>
+  <br>
+    <h1>Movie Database</h1>
+    <br>
+    <p>Please complete the fields below to search for a movie</p>
+    <input type="text" id="title-input" />
+    <select id="type-selector">
+      <option value="">---Select Type---</option>
+      <option value="Movie">Movie</option>
+      <option value="Series">Series</option>
+      <option vaue="Episode">Episode</option>
+    </select>
+    <select id="year-selector">
+      <option value="">---Select Year---</option>
+    </select>
+    <button id="submit-btn"
+    onclick="searchMovie()">Submit</button>
+    <i id="status-icon" class="fa"></i>
+    <p id="loading-spinner" hidden>
+      <i  class="fa fa-spinner fa-spin" ></i>
+    </p>
+    <div id="r">
+      <p id="r-info"></p>
+      <img id="r-poster" class="hidden" src="" alt="No poster to display" />
+      <p id="r-plot"></p>
+    </div>
+  </body>
+</html>
