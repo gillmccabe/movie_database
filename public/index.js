@@ -16,10 +16,10 @@ var searchMovie = function(){
   var title = document.querySelector('#title-input').value;
   var year = document.querySelector('#year-selector').value;
   var type = document.querySelector('#type-selector').value;
-  makeRequest(urlRequestBuilder(title, year, type), requestMovieComplete);
+  makeRequest(urlRequestBuilder(title, year, type), requestComplete);
 }
 
-var requestMovieComplete = function (){
+var requestComplete = function (){
   console.log(this.response);
   if(!this.response) {
     statusIcon.className += " fa-exclamation-triangle red"; 
@@ -73,4 +73,4 @@ var app = function(){
   populateYearDropdown();
 }
 
-window.onload = app;
+window.onload = searchMovie;
