@@ -21,16 +21,15 @@ var searchMovie = function(){
 
 var requestComplete = function (){
   console.log(this.response);
-  if(this.status === 200) {
+  if(this.status !== 404) {
     var statusIcon = document.getElementById('status-icon');
     statusIcon.className += " fa-check green";
     displayResult(JSON.parse(this.responseText));
   }
-  else if (this.status === 404) {
+  else {
     var statusIcon = document.getElementById('status-icon');
     statusIcon.className += " fa-exclamation-triangle red"; 
     document.getElementById('r-info').innerText = 'Your search returned no results. Please try again.';
-    document.getElementById('r-poster').style.visibility = 'hidden';
   }
   toggleLoadingSpinner('#submit-btn', '#loading-spinner');
 }
