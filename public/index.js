@@ -21,30 +21,26 @@ var searchMovie = function(){
 
 var requestComplete = function (){
   console.log(this.response);
-  if(!this.response) {
-    statusIcon.className += " fa-exclamation-triangle red"; 
-  }
-  else{
+  if(this.status === 200) {
     var statusIcon = document.getElementById('status-icon');
     statusIcon.className += " fa-check green";
     displayResult(JSON.parse(this.responseText));
   }
+  else if (this.status === 404) {
+    var statusIcon = document.getElementById('status-icon');
+    statusIcon.className += " fa-exclamation-triangle red"; 
+    document.getElementById('r-info').innerText = 'Your search returned no results. Please try again.';
+    document.getElementById('r-poster').style.visibility = 'hidden';
+  }
   toggleLoadingSpinner('#submit-btn', '#loading-spinner');
 }
 
-
 var displayResult = function (response){
-  // if (!this.response) {
-  //   document.getElementById('r-info').innerText = 'Your search returned no results. Please try again.';
-  //   document.getElementById('r-poster').style.visibility = 'hidden';
-  // } 
-  // else {
   document.getElementById('r-info').innerText = 
   "Title: \n" + response.Title + " \n \n Year: \n" + response.Year + "\n \n Type: \n" + response.Type + "\n \n Synopsis: \n " + response.Plot;
   var poster = document.getElementById('r-poster');
     poster.style.visibility = "visible";
     poster.src = response.Poster;
-  // }
 }
 
 var populateYearDropdown = function(){
@@ -73,4 +69,4 @@ var app = function(){
   populateYearDropdown();
 }
 
-window.onload = searchMovie;
+window.onload = app;
